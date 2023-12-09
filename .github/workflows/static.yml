@@ -36,7 +36,7 @@ jobs:
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
-          source: ./d3_assignment/ // CHANGE THAT TO WHATEVER YOU WANT
+          source: ./d3_assignment/ 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
