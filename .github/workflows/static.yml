@@ -33,6 +33,10 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v4
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./d3_assignment/ // CHANGE THAT TO WHATEVER YOU WANT
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
