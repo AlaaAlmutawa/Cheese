@@ -1,0 +1,156 @@
+
+@import url(//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900);
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+/* @import url(‘https://fonts.googleapis.com/css?family=Rubik’); */
+
+svg {
+  font: 10px sans-serif;
+}
+
+.background path {
+  fill: none;
+  stroke: #ddd;
+  shape-rendering: crispEdges;
+}
+
+.foreground {
+  fill: none;
+  /* stroke: steelblue; */
+}
+
+h1{
+  font-size: 30px;
+  font-family: 'Rubik';
+  text-align: center;
+
+}
+p {
+  font-family: 'Rubik';
+  /* border-bottom: 2px solid rgba(0, 0, 0, 0.2); Adjust color and thickness as needed */
+  width: 100%; /* Ensure the line spans the full width of the title */
+  padding-bottom: 10px; /* Adjust space between title and line */ 
+} 
+
+.center {
+  margin: auto;
+  padding: 10px;
+}
+
+#legend {
+  /* float:left; */
+  display:inline-block;
+
+}
+#chart {
+  /* float:right; */
+  display:inline-block;
+
+}
+
+#wrapper {
+    font-family: 'Rubik';
+
+
+}
+
+.container {
+  text-align: center; /* Centers the content */
+  margin: 20px; /* Adds some space around the container */
+}
+
+.container h1 {
+  margin-bottom: 10px; /* Space between title and dropdown */
+}
+
+#user_selection {
+  margin-bottom: 20px; /* Space below the dropdown */
+  padding: 5px; /* Padding inside the dropdown */
+  width: 200px; /* Width of the dropdown */
+  font-size: 1rem; /* Text size in the dropdown */
+}
+
+.row {
+  cursor: pointer;
+}
+.row {
+  font-size: 16px;
+  line-height: 1.3em;
+}
+
+.domain, .tick line, .tick text{
+  opacity: 0.3;
+}
+
+/* body {
+  background-color: rgb(242, 242, 186);
+} */
+
+/* html { */
+  /* background-color: #F7F5F6 */
+  /* background-color: #f1ebe0; */
+/* } */
+h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 30px;
+}
+
+div.source_name {
+    position: absolute;
+    text-align: center;
+    padding: .3rem;
+    background: #FFFFFF;
+    color: #373839;
+    border: 1px solid #dadfe2;
+    border-radius: 4px;
+    pointer-events: none;
+    font-size: 0.8rem;
+  }
+
+
+/* div.funfact {
+    position: absolute;
+    text-align: center;
+    padding: .3rem;
+    background: #FFFFFF;
+    color: #373839;
+    border: 1px solid #dadfe2;
+    border-radius: 4px;
+    pointer-events: none;
+    font-size: 0.8rem;
+  } */
+  div.funfact {
+    position: absolute;
+    text-align: center;
+    padding: 0.5rem; /* Adjusted for better spacing */
+    background: #FFFFFF;
+    color: #373839;
+    border: 2px solid #dadfe2;
+    border-radius: 4px;
+    pointer-events: none;
+    font-size: 0.9rem; /* Slightly larger for readability */
+    width: 250px; /* Fixed width */
+    height: 150px; /* Fixed height */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    font-family: 'Rubik';/* A more engaging font */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#barcircle{
+  width:100%;
+}
+
+.barchart{
+  text-align: center;
+}
+
+.total{
+  font-size:60px;    
+  font-family: 'Rubik';
+  font-weight:bolder;
+  fill: sienna;
+}

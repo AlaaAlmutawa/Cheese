@@ -1,0 +1,6 @@
+Data source: AGRIBALYSE® https://doc.agribalyse.fr/documentation-en/agribalyse-data/data-access
+Image Sources:
+          Cow: Freepik https://www.freepik.com/icon/cow_2395765
+          Goat: Flticon https://www.flaticon.com/free-icon/goat_5367669
+          Ewe: Freepik https://www.freepik.com/icon/sheep_5511464
+          Plant: Flaticon https://www.flaticon.com/free-icon/plant_5366860

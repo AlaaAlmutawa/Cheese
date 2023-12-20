@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>Friendly cheese</title>
+    <link rel="stylesheet" type="text/css" href="parallel_coordinate_chart.css" />
+  </head>
+  <body>
+  <div class="container">
+    <select id="user_selection">
+      <option value="mean">Mean Values</option>
+      <option value="all">All Products</option>
+    </select>
+    <div id="wrapper" class="center">  
+      <div id="selected_source_aggregate">
+
+      </div>
+      <div id="legend">
+
+      </div>
+      <div id="chart"> 
+
+      </div>
+      <p>
+        Unit = kg CO2 eq/kg
+      </p>
+      <svg id="new">
+      </svg>
+
+    </div>
+
+  </div>
+  
+  </body>
+  <script src="//d3js.org/d3.v3.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/d3@7"></script> -->
+  <script src="https://underscorejs.org/underscore.js"></script>
+  <script src="parallel_coordinate_chart.js"></script>
+</html>

@@ -1,0 +1,104 @@
+/* html { */
+    /* background-color: #F7F5F6 */
+    /* background-color: #f1ebe0;
+} */
+
+body {
+  font-family: "Krub","Open Sans",sans-serif; 
+}
+
+h1{
+    font-size: 60px;
+    color: #3f382d;
+    font-family: 'Roboto Slab','Rubik','Merriweather',"Chivo", serif;
+}
+
+hr {
+    margin-top:30px; 
+    margin-bottom:30px; 
+    border-top: 0.2px dotted #93846a;
+}
+
+.responsive-svg-container {
+  margin-right: 50px;
+  margin-left: 50px;
+  width: 95%;
+}
+
+.tick line{
+    visibility:hidden;
+  }
+
+.bubbles {
+    stroke-width: 0.5px;
+    stroke:#d2bd98; /*gray; #7F7238; #bdaa88*/
+    opacity: .8
+}
+
+.bubbles:hover {
+    stroke: black;
+    stroke-width: 2px;
+}
+
+.textlabel{
+    fill: #3f382d;
+}
+
+/* Style for the overlay div
+.overlay-div {
+    width: 200px;
+    height: 150px;
+    background-color: transparent; 
+    position: absolute;
+    top:  5%;
+    left: 4%; 
+    z-index: 1; /* Ensure the overlay is on top 
+  } */
+
+  /*Sources div at the bottom of the page*/
+#sources {
+  margin-left:4%;
+  margin-bottom: 2%;
+  color: gray;
+  font-size: 13px;
+}
+
+
+/*For pop up things*/
+#popup-container {
+  position: fixed;
+  top: 15%;
+  right: -500px; /* Initially hidden off the screen */
+  width: 500px;
+  height: 60%;
+  background-color: #f4f4f4;
+  box-shadow: -5px 0 5px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease-out;
+  opacity: 0.85;
+}
+
+#popup-content {
+    padding: 10%;
+    /* padding-left: 30px; */
+}
+
+/* #popup-close-btn {
+    position: absolute;
+    top: 20%;
+    right: 50px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #888;
+} */
+
+#popup-close-btn {
+  position: absolute;
+  top: 1%;
+  right: 1%;
+  cursor: pointer;
+  font-size: 14px; /* Adjust the font size as needed */
+  padding: 5px 10px;
+  background-color: #ccc;
+  border: none;
+  border-radius: 5px;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Say Cheese!</title>
+	<link rel="stylesheet" type="text/css" href="./bubble-style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather|Open+Sans|Chivo|Krub|Rubik">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200&display=swap" rel="stylesheet">
+</head>
+<body>
+	<!-- ALAA -->
+	<!-- <div class="container">
+		<h1>
+		&#x1F9C0; Cheese &#x1F9C0;<br>Carbon Footprint<br>
+		</h1> 
+		<p id="discription">
+		Let's explore the emitted kg CO2 equivalent within the cheese industry's supply chain for every kg of manufactured cheese 
+		</p>
+		<select id="user_selection">
+		<option value="mean">Mean Values</option>
+		<option value="all">All Products</option>
+		</select>
+		<div id="wrapper" class="center">  
+		<div id="selected_source_aggregate">
+
+		</div>
+		<div id="legend">
+
+		</div>
+		<div id="chart"> 
+
+		</div>
+		<p>
+			Unit = kg CO2 eq/kg
+		</p>
+
+		</div>
+		<div class="footer" id="source"> 
+		<p>
+			Our sources: <a href="https://doc.agribalyse.fr/documentation-en/"> Agribylase Database</a><br>
+			To read more about the methodology of product Life Cycle Assessment method, we invite you to visit this <a href="https://doc.agribalyse.fr/documentation-en/agribalyse-data/life-cycle-assessment-method">page</a>
+		</p>
+	</div>
+	</div>  -->
+
+	<!-- ADINA -->
+
+	<!-- Pop-up Container -->
+	<!-- <div id="head" class="overlay-div"></div> -->
+	<div id="main-content">
+		<div id="bubble"class="responsive-svg-container"></div>
+	</div>
+	
+    <!-- Pop-up Container -->
+    <div id="popup-container">
+		<span id="popup-close-btn" onclick="hidePopup()">&times;</span>
+        <div id="popup-content">
+        </div>
+    </div>
+
+	
+	<!-- <script src="https://d3js.org/d3.v3.min.js"></script> -->
+	<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+	<script src="./bubble-script.js"></script>
+	<script src="https://underscorejs.org/underscore.js"></script>
+	<script src="parallel_coordinate_chart.js"></script>
+	
+</body>
+</html>
