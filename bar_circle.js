@@ -98,7 +98,10 @@ $(document).ready(function() {
         .append("g")
         .attr('class', 'piechart')
         .attr("transform", "translate(" + width*mult / 2 + "," + height*mult / 3.5 + ")");
-    
+    var totalSum = data.reduce(function(accumulator, currentValue) {
+        return accumulator + currentValue.value;
+    }, 0);
+    var formattedTotal = '~ '+ (totalSum / 1000000000).toFixed(0) + 'billion kg CO2 eq';
     var text = svg.append('g')
         .append("text")
         .attr("text-anchor", "middle")  // Center the text
@@ -106,7 +109,7 @@ $(document).ready(function() {
         .attr("y", -30) 
         .attr("class","total")         // Vertically position the text in the middle
         .attr("dy", "-0.5em")            // Adjust the position under the arc
-        .text("1866k tons")         // The text to display //EURO stat 2021
+        .text(formattedTotal)         // The text to display //EURO stat 2021
     //__ text
     var segments = svg.append('g').attr('class', 'segments');
 
