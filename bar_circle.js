@@ -275,7 +275,38 @@ $(document).ready(function() {
 
     labels.exit().remove();
     //__labels
-
+    //__ unit explaination 
+    htmlContent = `<div class="top-right-content_html" style="text-align: center; margin-bottom:10px;"><span style="color: gray;">What are CO2 Equivalents (CO2)?</span></div>`
+    dets = `<div class="top-right-content_dets" style="text-align: center; margin-bottom:10px;"><span style="color: black;">Emissions of different gases emitted are converted to CO2 equivalent based on 'Global Warming Potential' (GWP)</span></div>`
+    dets2 = `<div class="top-right-content_dets" style="text-align: center; margin-bottom:10px;">
+    <span style="color: black;">
+        This helps in measuring of warming that is contributed by each gas to the greenhouse effect.
+        <br> 
+        <table>
+            <tr>
+                <th>Gas type (1kg emissions)</th>
+                <th>CO2 Equivalents</th>
+            </tr>
+            <tr>
+                <td>CO2</td>
+                <td>1kg</td>
+            </tr>
+            <tr>
+                <td>N2O (Nitrous Oxide)</td>
+                <td>298kg</td>
+            </tr>
+            <tr>
+                <td>CH4 (Methane)</td>
+                <td>25kg</td>
+            </tr>
+        </table>
+    </span>
+</div>`
+    source = `<div class="top-right-content_dets" style="text-align: center; margin-bottom:10px;">Source: <a href="https://www.cbs.nl/en-gb/news/2019/37/greenhouse-gas-emissions-down/co2-equivalents" target="_blank">Statistics Netherlands</a></div>`
+    var topRightDiv = d3.select('.barchart').append("div")
+        .attr("class", "top-right-content")
+        .html(htmlContent+dets+dets2+source);
+    
     //__pointers
     //  var pointers = svg.append('g').attr('class', 'pointers');
 
