@@ -255,6 +255,7 @@ d3.select("#user_selection").on("change", function() {
 function load_data(file_name) {
   d3.csv(file_name, function(error, sources) {
     svg.selectAll(".foreground path").remove();
+    svg.selectAll('.dimension').remove();
     data = sources;
     if (error) throw error;
     var values = sources.flatMap(d => 
@@ -263,7 +264,8 @@ function load_data(file_name) {
     var uniform_scale = d3.scale.linear()
     .domain(d3.extent(values))
     .range([height, 0]);
-    
+    // console.log(d3.extent(values))
+
 
     //Extract the list of dimensions and create a scale for each.
     x.domain(dimensions = d3.keys(sources[0]).filter(function(d) {
