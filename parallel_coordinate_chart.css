@@ -84,6 +84,7 @@ p {
   padding: 5px; /* Padding inside the dropdown */
   width: 200px; /* Width of the dropdown */
   font-size: 1rem; /* Text size in the dropdown */
+  font-family:'Rubik';
 }
 
 .row {
@@ -144,4 +145,8 @@ div.source_name {
   border-radius: 4px;
   pointer-events: none;
   font-size: 0.8rem;
+}
+#stages {
+  font-family: 'Rubik';
+
 }
