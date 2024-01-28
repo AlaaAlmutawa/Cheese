@@ -4,3 +4,6 @@ Image Sources:
           Goat: Flticon https://www.flaticon.com/free-icon/goat_5367669
           Ewe: Freepik https://www.freepik.com/icon/sheep_5511464
           Plant: Flaticon https://www.flaticon.com/free-icon/plant_5366860
+	  Plug: https://www.flaticon.com/free-icon/power-plug_7841598?term=power+plug&page=1&position=52&origin=tag&related_id=7841598
+	  Water: https://www.flaticon.com/free-icon/water_3119434?term=water+drop&page=1&position=46&origin=search&related_id=3119434
+	  Car: https://www.flaticon.com/free-icon/automobile_6666851?term=automobile&page=2&position=19&origin=search&related_id=6666851

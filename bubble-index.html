@@ -9,62 +9,135 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200&display=swap" rel="stylesheet">
 </head>
 <body>
-	<!-- ALAA -->
-	<!-- <div class="container">
-		<h1>
-		&#x1F9C0; Cheese &#x1F9C0;<br>Carbon Footprint<br>
-		</h1> 
-		<p id="discription">
-		Let's explore the emitted kg CO2 equivalent within the cheese industry's supply chain for every kg of manufactured cheese 
-		</p>
-		<select id="user_selection">
-		<option value="mean">Mean Values</option>
-		<option value="all">All Products</option>
-		</select>
-		<div id="wrapper" class="center">  
-		<div id="selected_source_aggregate">
-
-		</div>
-		<div id="legend">
-
-		</div>
-		<div id="chart"> 
-
-		</div>
-		<p>
-			Unit = kg CO2 eq/kg
-		</p>
-
-		</div>
-		<div class="footer" id="source"> 
-		<p>
-			Our sources: <a href="https://doc.agribalyse.fr/documentation-en/"> Agribylase Database</a><br>
-			To read more about the methodology of product Life Cycle Assessment method, we invite you to visit this <a href="https://doc.agribalyse.fr/documentation-en/agribalyse-data/life-cycle-assessment-method">page</a>
-		</p>
-	</div>
-	</div>  -->
-
-	<!-- ADINA -->
 
 	<!-- Pop-up Container -->
 	<!-- <div id="head" class="overlay-div"></div> -->
+	<div id="click-div" style="text-align: center; margin-top: 0px;">
+		<button id="click-button" class="minimalist-button" onclick="resetPopup()" style="font-family: 'Rubik'">
+		  Manually pick or compare here
+		</button>
+		<button id="click-button" class="minimalist-button" onclick="openInfoPopup()" style="font-family: 'Rubik'">
+			How were these derived?
+		  </button>
+	  </div>
+
+	  <div id="info-popup-container" class="minimalist-popup">
+		<span id="popup-close-btn" onclick="closeInfoPopup()" style="margin-top:8px">&times;</span>
+		<div id="info-popup-content">
+			<h2>Conversion Factors</h2>
+			<table>
+				<tr>
+					<td><strong>Climate Change <br>(kg CO2 eq)</strong></td>
+					<td>0.171 kg of carbon dioxide-equivalents (CO2 eq) per kilometer for a diesel car, based on Our World in Data
+						<a href="https://ourworldindata.org/travel-carbon-footprint" target="_blank">source</a></td>
+				</tr>
+				<tr>
+					<td><strong>Water Depletion <br>(m3)</strong></td>
+					<td>150L per person per day in France based on Anses France
+						<a href="https://www.anses.fr/en/content/good-practices-drinking-water-consumption-1#:~:text=In%20France%2C%20we%20consume%20an,%2C%20lakes%2C%20reservoirs)%20catchments."
+							target="_blank">source</a></td>
+				</tr>
+				<tr>
+					<td><strong>Energy depletion <br>(MJ)</strong></td>
+					<td>99.6 watt-hours for a MacBook Pro 16 in
+						<a href="https://support.apple.com/kb/SP858?viewlocale=en_KW&locale=en_KW" target="_blank">source</a></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
 	<div id="main-content">
 		<div id="bubble"class="responsive-svg-container"></div>
 	</div>
 	
     <!-- Pop-up Container -->
-    <div id="popup-container">
+    <!-- <div id="popup-container">
 		<span id="popup-close-btn" onclick="hidePopup()">&times;</span>
         <div id="popup-content">
         </div>
-    </div>
+    </div> -->
 
+
+	<div id="popup-container" draggable="true" ondragstart="dragStart(event)" ondragend="dragEnd(event)" style="padding-top:0">
+		<span id="popup-close-btn" onclick="hidePopup()">&times;</span>
+		<div id="bubble-container" style="padding:5%; padding-top: 8%; padding-bottom: 8%">
+			<!-- First cheese -->
+			<div class="bubble-column">
+				<div class="bubble-row">
+					<select id="bubble-animalDropdown1" style="width: 100%; height: 30px;" class="dropdowns">
+						<option value="" selected disabled>Choose an animal</option>
+						<option value="cow">Cow</option>
+						<option value="ewe">Ewe</option>
+						<option value="goat">Goat</option>
+						<option value="plant">Plant</option>
+					</select>
+				</div>
+				<div class="bubble-row">
+					<select id="bubble-nameDropdown1" style="width: 100%; height: 30px;" class="dropdowns" onclick="dropdownPopup()">
+						<option value="" selected disabled>Choose your cheese</option>
+						<!-- Options will be dynamically populated based on the selected animal -->
+					</select>
+				</div>
+			</div>
+		
+			<!-- "vs" Circle -->
+			<div class="bubble-vs-circle">vs</div>
+		
+			<!-- Second cheese -->
+			<div class="bubble-column">
+				<div class="bubble-row">
+					<select id="bubble-animalDropdown2" style="width: 100%; height: 30px;" class="dropdowns">
+						<option value="">Choose an animal</option>
+						<option value="cow">Cow</option>
+						<option value="ewe">Ewe</option>
+						<option value="goat">Goat</option>
+						<option value="plant">Plant</option>
+					</select>
+				</div>
+				<div class="bubble-row">
+					<select id="bubble-nameDropdown2" style="width: 100%; height: 30px;" class="dropdowns" onclick="dropdownPopup()">
+						<option value="">Choose your cheese</option>
+						<!-- Options will be dynamically populated based on the selected animal -->
+					</select>
+				</div>
+				<div id="reset-div">
+					<!-- Your other content here -->
+					<div id="reset-line" style="font-size:10px; text-decoration: underline; text-align: right;"  onclick="forgetComparison()">
+						Remove Comparison
+					</div>
+					<div id="reset-line2" style="font-size:10px; text-decoration: underline; text-align: left;"  onclick="resetPopup()">
+						Reset
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+
+		<div id="popup-content">
+			<!-- Content goes here -->
+		</div>
+	</div>
 	
 	<!-- <script src="https://d3js.org/d3.v3.min.js"></script> -->
 	<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
 	<script src="./bubble-script.js"></script>
 	<script src="https://underscorejs.org/underscore.js"></script>
 	<script src="parallel_coordinate_chart.js"></script>
+	<script>
+		var offsetX, offsetY;
 	
+		function dragStart(e) {
+			e.dataTransfer.setDragImage(new Image(), 0, 0); // Set an empty image to avoid default ghost image
+			offsetX = e.clientX - parseInt(window.getComputedStyle(e.target).left);
+			offsetY = e.clientY - parseInt(window.getComputedStyle(e.target).top);
+		}
+	
+		function dragEnd(e) {
+			// Update the position of the pop-up container after dragging
+			document.getElementById("popup-container").style.left = e.clientX - offsetX + "px";
+			document.getElementById("popup-container").style.top = e.clientY - offsetY + "px";
+		}
+	</script>
 </body>
 </html>
