@@ -26,7 +26,7 @@
 
     <br>
     <label for="indicator">based on</label>
-    <select id="indicator" onchange="filterBasedOn()">
+    <select id="indicator" class="dropdowns" onchange="filterBasedOn()">
         <option default=True value="ef_score_total">EF Score</option>
         <option value="clim_change_total">CO2</option>
         <option value="depl_energy_total">Water Depletion</option>
@@ -38,12 +38,12 @@
     <!-- Your chart content goes here -->
 </div>
 
-<select id="source" onchange="filterBasedOn()">
+<!-- <select id="source" onchange="filterBasedOn()">
   <option value="all">All</option>
   <option value="cow">Cow</option>
   <option value="ewe">Sheep</option>
   <option value="goat">Goat</option>
-</select>
+</select> -->
 
 
 <!-- <label for="indicator">Type</label>
