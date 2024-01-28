@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>D3 Podium</title>
+  <link rel="stylesheet" type="text/css" href=rank.css" />
+</head>
+<body>
+<label for="source">What would you like to rank ?</label>
+<select id="source" onchange="filterBasedOn()">
+  <option value="all">All</option>
+  <option value="cow">Cow</option>
+  <option value="ewe">Sheep</option>
+  <option value="goat">Goat</option>
+
+</select>
+
+<label for="indicator">Indicator</label>
+<select id="indicator" onchange="filterBasedOn()">
+  <option default=True value="ef_score_total">EF Score</option>
+  <option value="clim_change_total">CO2</option>
+  <option value="depl_energy_total">Water Deplition</option>
+</select>
+
+<div id="chart">
+
+</div>
+
+<!-- <label for="indicator">Type</label>
+<select id="indicator" onchange="filterBasedOn()">
+  <option default=True value="semihard cheeses">Semi-hard Cheeses</option>
+  <option value="blue cheeses">Blue Cheeses</option>
+  <option value="soft cheeses">Soft Cheeses</option>
+  <option value="uncured cheeses and similar">Uncured Cheeses</option>
+  <option value="processed cheeses">Processed Cheeses</option>
+</select> -->
+
+</body>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="rank.js"></script>
+</html>

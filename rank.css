@@ -1,0 +1,51 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+.podium {
+/* display: flex;
+align-items: flex-end; */
+}
+
+.podium-bar {
+width: 50px;
+margin: 0 0px;
+background-color: #ccc;
+position: relative;
+}
+
+.position-label {
+text-align: center;
+margin-top: 5px;
+}
+svg {
+display: block;
+margin: 0 auto;
+}
+
+.name-label {
+    text-align: center;
+    margin-top: 5px;
+    height: 20px;
+    width: 10px;
+}
+#legend {
+    /* float:left; */
+    display:inline-block;
+  
+  }
+  div.source_name {
+    position: absolute;
+    text-align: center;
+    padding: .3rem;
+    background: #FFFFFF;
+    color: #373839;
+    border: 1px solid #dadfe2;
+    border-radius: 4px;
+    pointer-events: none;
+    font-size: 0.8rem;
+  }
