@@ -4,28 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>D3 Podium</title>
-  <link rel="stylesheet" type="text/css" href=rank.css" />
+  <link rel="stylesheet" type="text/css" href="./rank.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather|Open+Sans|Chivo|Krub|Rubik">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200&display=swap" rel="stylesheet">
+  
+
 </head>
 <body>
-<label for="source">What would you like to rank ?</label>
+
+  <div id="toprow">
+    <label style="font-size: 35px;">Which</label>
+
+    <div id="image-container">
+      <img src="images/cow.png" alt="Cow" class="animal-image" onclick="toggleImage(this, 'cow')">
+      <img src="images/ewe.png" alt="Ewe" class="animal-image" onclick="toggleImage(this, 'ewe')">
+      <img src="images/goat.png" alt="Goat" class="animal-image" onclick="toggleImage(this, 'goat')">
+      <img src="images/plant.png" alt="Plant" class="animal-image" onclick="toggleImage(this, 'plant')">
+    </div>
+    
+    <label style="font-size: 35px;">cheese reigns supreme?</label>
+
+    <br>
+    <label for="indicator">based on</label>
+    <select id="indicator" onchange="filterBasedOn()">
+        <option default=True value="ef_score_total">EF Score</option>
+        <option value="clim_change_total">CO2</option>
+        <option value="depl_energy_total">Water Depletion</option>
+    </select>
+
+</div>
+
+<div id="chart">
+    <!-- Your chart content goes here -->
+</div>
+
 <select id="source" onchange="filterBasedOn()">
   <option value="all">All</option>
   <option value="cow">Cow</option>
   <option value="ewe">Sheep</option>
   <option value="goat">Goat</option>
-
 </select>
 
-<label for="indicator">Indicator</label>
-<select id="indicator" onchange="filterBasedOn()">
-  <option default=True value="ef_score_total">EF Score</option>
-  <option value="clim_change_total">CO2</option>
-  <option value="depl_energy_total">Water Deplition</option>
-</select>
-
-<div id="chart">
-
-</div>
 
 <!-- <label for="indicator">Type</label>
 <select id="indicator" onchange="filterBasedOn()">
@@ -37,6 +56,6 @@
 </select> -->
 
 </body>
-<script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="rank.js"></script>
 </html>

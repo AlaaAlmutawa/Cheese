@@ -1,27 +1,76 @@
 body {
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    /* height: 100vh; */
     margin: 0;
-  }
-
-.podium {
-/* display: flex;
-align-items: flex-end; */
+    font-family: "Rubik"; 
 }
 
-.podium-bar {
+#toprow{
+width:100%;
+text-align: center;
+height: 40px;
+margin-bottom: 50px;
+}
+
+#chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.position-label {
+  text-align: center;
+  margin-top: 5px;
+  color: white;
+  }
+  
+svg{
+  background-color: transparent;
+}
+
+#image-container {
+  display: inline-flex;
+  align-items: center;
+}
+
+.animal-image {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: filter 0.3s ease;
+}
+
+.selected {
+  filter: grayscale(100%) brightness(20%);
+  /* filter: sepia(50%) saturate(500%) hue-rotate(120deg); Adjust this value for dark green */
+}
+
+/* Additional styling for labels */
+label {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+select {
+  margin-right: 10px;
+}
+
+/* .podium {
+display: flex;
+align-items: flex-end;
+} */
+
+/* .podium-bar {
 width: 50px;
 margin: 0 0px;
 background-color: #ccc;
 position: relative;
 }
 
-.position-label {
-text-align: center;
-margin-top: 5px;
-}
+
 svg {
 display: block;
 margin: 0 auto;
@@ -34,18 +83,19 @@ margin: 0 auto;
     width: 10px;
 }
 #legend {
-    /* float:left; */
+
     display:inline-block;
   
   }
-  div.source_name {
-    position: absolute;
-    text-align: center;
-    padding: .3rem;
-    background: #FFFFFF;
-    color: #373839;
-    border: 1px solid #dadfe2;
-    border-radius: 4px;
-    pointer-events: none;
-    font-size: 0.8rem;
-  }
+
+div.source_name {
+  position: absolute;
+  text-align: center;
+  padding: .3rem;
+  background: #FFFFFF;
+  color: #373839;
+  border: 1px solid #dadfe2;
+  border-radius: 4px;
+  pointer-events: none;
+  font-size: 0.8rem;
+} */
