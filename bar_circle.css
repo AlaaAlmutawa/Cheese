@@ -157,12 +157,12 @@ div.source_name {
 
 .top-right-content {
   position: absolute;
-  top: 0%;
-  right: 0;
+  /* top: 0%; 
+  right: 0; */
   border-radius: 1rem;
   margin-right: 10px;
-  width: 350px; /* Adjust as needed */
-  height: 310px; /* Adjust as needed */
+  width: auto; /* Adjust as needed */
+  height: auto; /* Adjust as needed */
   background-color: #fff; /* Adjust as needed */
   padding: 10px;
   box-shadow: 0.25rem 0.25rem 0.75rem rgb(0 0 0 / 0.1);
@@ -175,7 +175,7 @@ div.source_name {
   font-weight:bolder;
 }
 .top-right-content_dets{
-  font-size:14px;    
+  /* font-size:14px;     */
   font-family: 'Rubik';
 }
 .top-right-content_dets table {
@@ -188,4 +188,10 @@ div.source_name {
 .top-right-content_dets th, .top-right-content_dets td {
   border: 1px solid black;
   padding: 10px;
+}
+.info {
+  font-size: 14px;
+  font-family: 'Rubik';
+  font-weight: bold;
+  fill: sienna;
 }

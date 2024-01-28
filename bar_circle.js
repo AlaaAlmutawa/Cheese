@@ -1,39 +1,32 @@
 $(document).ready(function() {
 
-    var $this = $('.barchart');
-    // 5.452991153841180 cow
-    // 5.780729289471430 ewe
-    // 6.444954150900000 goat
-    var data = [
-        {
-            label: 'Goat',
-            value: 99552*6.444954150900000*907.185, //million tons 99,552 tons
-            code: 'goat',
-        },
-        {
-            label: 'Sheep',
-            value: 5.780729289471430*61000*907.185, //61,000 tons
-            code: 'ewe',
-        },
-        {
-            label: 'Cow',
-            value: 1700000*907.185*5.452991153841180, //million tons statista 2019
-            code: 'cow',
-        },
-    ];
+d3.csv('data/cheese_production_2022.csv', d=>{
+    if (d.code === 'cow') {
+         return {label: d.label,
+         value: parseFloat(d.value)*907.185*5.452991153841180, // Assuming the 'value' column in the CSV contains numeric values
+         code: d.code,}
+    }else if(d.code === 'ewe'){
+        return {label: d.label,
+        value: parseFloat(d.value)*907.185*5.780729289471430, // Assuming the 'value' column in the CSV contains numeric values
+        code: d.code,}
+    }else if(d.code === 'goat'){
+        return {label: d.label,
+        value: parseFloat(d.value)*907.185*6.444954150900000, // Assuming the 'value' column in the CSV contains numeric values
+        code: d.code,}
+    } 
+    return {
+        label: d.label,
+        value: parseFloat(d.value), // Assuming the 'value' column in the CSV contains numeric values
+        code: d.code,
+    }
+}).then(data => { create_chart(data) });
 
-    var width = $this.data('width'),
-        height = $this.data('height'),
-        radius = $this.data('r'),
-        innerradius = $this.data('ir');
+function create_chart(data){
+    var width = 500,
+        height = 500,
+        radius =200,
+        innerradius =400;
 
-    //channel 2 
-    // var colors = {
-    //     "cow": '#EDB458',
-    //     "ewe": '#E8871E',
-    //     "goat": '#C8963E',
-    //     "plant": '#C3C49E',
-    // };
     var colors = {
         "cow": '#EDB458',
         "ewe": '#E8871E',//'#E8871E',
@@ -78,11 +71,6 @@ $(document).ready(function() {
         d.total = +d.value;
     });
 
-    // var pie = d3.pie()
-    //     .startAngle(-90 * (Math.PI / 180))
-    //     .endAngle(120 * (Math.PI / 180))
-    //     .sort(null)
-    //     .value(function(d) { return d.total; });
     var pie = d3.pie()
     .startAngle(-90 * (Math.PI / 180))
     .endAngle(90 * (Math.PI / 180))
@@ -98,6 +86,7 @@ $(document).ready(function() {
         .append("g")
         .attr('class', 'piechart')
         .attr("transform", "translate(" + width*mult / 2 + "," + height*mult / 3.5 + ")");
+    console.log("barchart done")
     var totalSum = data.reduce(function(accumulator, currentValue) {
         return accumulator + currentValue.value;
     }, 0);
@@ -110,6 +99,24 @@ $(document).ready(function() {
         .attr("class","total")         // Vertically position the text in the middle
         .attr("dy", "-0.5em")            // Adjust the position under the arc
         .text(formattedTotal)         // The text to display //EURO stat 2021
+    
+    var info = svg.append('g')
+    .append("text")
+    .attr("text-anchor", "middle")  // Center the text
+    .attr("x", 5)           // Horizontally center the text in the SVG 
+    .attr("y", -10)
+    .attr("class","info")         // Vertically position the text in the middle
+    .attr("dy", "-0.5em")            // Adjust the position under the arc
+    .text("\u{1F449} But what does kg CO2 equivalent mean?")  
+
+    var info2 = svg.append('g')
+    .append("text")
+    .attr("text-anchor", "middle")  // Center the text
+    .attr("x", 5)           // Horizontally center the text in the SVG
+    .attr("y", 10)  
+    .attr("class","info")         // Vertically position the text in the middle
+    .attr("dy", "-0.5em")            // Adjust the position under the arc
+    .text("\u{1F9EE} How did we calculate this?")  
     //__ text
     var segments = svg.append('g').attr('class', 'segments');
 
@@ -119,36 +126,10 @@ $(document).ready(function() {
         .attr("class", "arc")
         .attr('id', function(d) { console.log(d); return d.data.code; })
 
-    // slices.append("path")
-    //     .data(pieData)
-    //     .attr("d", arc)
-    //     .attr('fill', function(d,i) {
-    //         return colors[d.data.code];
-    //     })
-    //     .on('mouseover', function(d) {
-    //         d3.select(this)
-    //             .transition()
-    //             .duration(500)
-    //             .attr('d', hoverArc)
-    //             .style('fill-opacity', 1)
-    //             .transition().duration(500)
-    //             .attr('d', hoverArc)
-    //             .style('stroke-width', 10)
-    //             .style('stroke', '#f2f2ba')
-    //     })
-    //     .on('mouseout', function(d) {
-    //         d3.select(this)
-    //             .style('fill-opacity', 0.8)
-    //             .transition()
-    //             .duration(500)
-    //             .attr('d', arc)
-    //      })
     slices.append("path")
     .attr('d', zeroArc)
     .attr('class', 'arc')
     .style('fill-opacity', 0.7)
-    // .style('stroke-width',5)
-    // .style('stroke', '#f2f2ba')
     .data(pieData)
     .attr('fill', function(d,i) {
         return colors[d.data.code];
@@ -179,15 +160,29 @@ $(document).ready(function() {
         funfact.transition()
         .duration(50)
         .style("opacity", 1);
-       console.log(i)
-       funfact.html("Did you know?<br><br>Equivalent to driving "+ Math.round((i.data.value/1000000) * 0.19) +" million km using Toyota Corolla Sedan Petrol (2020) \u{1F697}<br><br>Equivalent to lighting effiel tower for X days \u{1F4A1}\u{1F1EB}\u{1F1F7}")
-           .style("left", (400) + "px")
-           .style("top", (100) + "px");
+       funfact.html("Did you know?<br>Equivalent to driving "+ Math.round((i.data.value/1000000) * 0.19) +" million km using Toyota Corolla Sedan Petrol (2020) \u{1F697}")
+           .style("left", 100 + "px")
+           .style("top", 100+ "px");
+        // var close = funfact.append('button')
+        //         .attr('class', 'close-button')
+        //         .on('click', ()=> {console.log('close')})
+        //         .text('x');
+
+        // close.style("position", "absolute")
+        // .style("right", 0 + "px")
+        // .style("top", 0 + "px")
+        // .style("font-size", "15px")
+        // .style("border", "none")
+        // .style("background-color", "transparent")
+        // .style("color", "black")
+        // .style("cursor", "pointer");
+    
     })
     .transition()
     .duration(1000)
     .delay((d, i) => i * 300)
     .attr('d', arc)
+
 
     //__labels
     var labels = svg.append('g').attr('class', 'labels');
@@ -305,52 +300,48 @@ $(document).ready(function() {
     source = `<div class="top-right-content_dets" style="text-align: center; margin-bottom:10px;">Source: <a href="https://www.cbs.nl/en-gb/news/2019/37/greenhouse-gas-emissions-down/co2-equivalents" target="_blank">Statistics Netherlands</a></div>`
     var topRightDiv = d3.select('.barchart').append("div")
         .attr("class", "top-right-content")
+        .style("opacity", 0)
         .html(htmlContent+dets+dets2+source);
+    //__ unit explaination
+    info.on("mouseover", function(event, d) {
+        topRightDiv.transition()
+        .duration(200)
+        .style("opacity", 0.9);
+        topRightDiv.style("right", 0 + "px")
+        .style("top","0%")
+        .style("width", 500 + "px")
+        .style("height", 320 + "px");
+    } );
+    info.on("mouseout", function(event, d) {
+        topRightDiv.transition()
+        .duration(500)
+        .style("opacity", 0);
+    });
+
+    //__ calaculation explaination
+    dets_calc = `<div class="top-right-content_dets" style="text-align: center; margin-bottom:10px;"><span style="color: black;">Production in Kg * Average Kg CO2 eq</span></div>`
+    var topRightDiv_calc = d3.select('.barchart').append("div")
+        .attr("class", "top-right-content")
+        .style("opacity", 0)
+        .html(dets_calc);
+    info2.on("mouseover", function(event, d) {
+        const rect = this.getBoundingClientRect();
+        topRightDiv_calc.transition()
+        .duration(200)
+        .style("opacity", 0.9);
+        topRightDiv_calc.style("left", (rect.x) + "px")
+        .style("top", (rect.y + rect.height) + "px")
+        .style("width", (rect.width) + "px")
+        .style("height", (rect.height) + "px")
+        .style("font-size", "10px");
+    } );
+    info2.on("mouseout", function(event, d) {
+        topRightDiv_calc.transition()
+        .duration(500)
+        .style("opacity", 0);
+    });
     
-    //__pointers
-    //  var pointers = svg.append('g').attr('class', 'pointers');
-
-    //  pointers
-    //     .append('defs')
-    //     .append('marker')
-    //     .attr('id', 'circ')
-    //     .attr('markerWidth', 6)
-    //     .attr('markerHeight', 6)
-    //     .attr('refX', 3)
-    //     .attr('refY', 3)
-    //     .append('circle')
-    //     .attr('cx', 3)
-    //     .attr('cy', 3)
-    //     .attr('r', 3);
-
-    // var pointer = pointers.selectAll('path.pointer').data(pieData)
-    //     .enter()
-    //     .append('path')
-    //     .attr('class', 'pointer')
-    //     .style('fill', 'none')
-    //     .style('stroke', 'black')
-    //     .attr('marker-end', 'url(#circ)');
-
-    // pointer
-    //     .attr('d', function(d) {
-    //         if (d.cx > d.ox) {
-    //             return (
-    //                 'M' + d.sx + ',' +  d.sy +
-    //                 'L' + d.ox + ',' + d.oy + ' ' + d.cx + ',' + d.cy
-    //             );
-    //         } else {
-    //             return (
-    //                 'M' + d.ox + ',' + d.oy + 
-    //                 'L' + d.sx + ',' + d.sy + ' ' + d.cx + ',' + d.cy
-    //             );
-    //         }
-    //     })
-    //     .transition()
-    //     .duration(300);
-
-    // pointers.transition().duration(300);
-
-    // pointers.exit().remove();
-    // //__pointers
-
+    
+}
 });
+    
