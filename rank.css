@@ -79,6 +79,7 @@ select {
   font-size: 14px;
   border-radius: 5px;
   margin-bottom: 2px;
+  font-family: 'Rubik';
 }
 
 .dropdowns option {

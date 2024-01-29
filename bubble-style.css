@@ -4,13 +4,13 @@
 } */
 
 body {
-  font-family: "Krub","Open Sans",sans-serif; 
+  font-family: 'Rubik',"Krub","Open Sans",sans-serif; 
 }
 
 h1{
     font-size: 60px;
     color: #3f382d;
-    font-family: 'Roboto Slab','Rubik','Merriweather',"Chivo", serif;
+    font-family: 'Rubik','Roboto Slab','Rubik','Merriweather',"Chivo", serif;
 }
 
 hr {
@@ -42,6 +42,7 @@ hr {
 
 .textlabel{
     fill: #3f382d;
+    font-family: 'Rubik';
 }
 
 /* Style for the overlay div
@@ -138,6 +139,7 @@ select {
   font-size: 14px;
   border-radius: 5px;
   margin-bottom: 2px;
+  font-family: 'Rubik';
 }
 
 .dropdowns option {
