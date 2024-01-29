@@ -195,3 +195,16 @@ div.source_name {
   font-weight: bold;
   fill: sienna;
 }
+
+  #popup-close-btn {
+    position: absolute;
+    top: 1%;
+    right: 1%;
+    cursor: pointer;
+    font-size: 14px; /* Adjust the font size as needed */
+    padding: 5px 10px;
+    background-color: #ccc;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+}

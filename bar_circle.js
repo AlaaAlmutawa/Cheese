@@ -48,6 +48,7 @@ function create_chart(data){
 
     var funfact = d3.select("body").append("div")
     .attr("class", "funfact")
+    .attr("id", "funfact-popup-container")
     .style("opacity", 0);
 
     var arc = d3.arc()
@@ -159,14 +160,10 @@ function create_chart(data){
     .on('click', function(d,i) {
         funfact.transition()
         .duration(50)
-        .style("opacity", 1); //https://www.fueleconomy.gov/feg/Find.do?action=sbs&id=41213
-        // 257 grams of co2 eq per mile 
-        //convert grams to kg 
-        // 257/1000 = 0.257 
-        // convert from miles to km 
-        // 0.257 * 0.621371 = 0.1597 kg co2 eq per km
-        // km per kg co2 eq = 1/0.1597 = 6.26 km per kg co2 eq
-       funfact.html("Did you know?<br>Equivalent to driving "+ Math.round((i.data.value/1000000) * (1/0.1597)) +" million km using Toyota Corolla Sedan Petrol (2020) \u{1F697} <br><br>\u{1F9EE} using: <br> [car km per kg CO2 eq] x [yearly kg CO2 eq of production]<br>")
+        .style("opacity", 1); 
+        //0.171 kg co2 eq per km
+        //km per kg co2 eq = 1/0.171 = 5.85 km per kg co2 eq
+       funfact.html("Did you know?<br>Equivalent to driving "+ Math.round((i.data.value/1000000) * (1/0.171)) +" million km using a diesel car \u{1F697} <br><br>\u{1F9EE} using: <br> [yearly kg CO2 eq of production] / [kg CO2 eq per km] <br>")
            .style("left", 100 + "px")
            .style("top", 100+ "px");
         // var close = funfact.append('button')
@@ -280,6 +277,7 @@ function create_chart(data){
     htmlContent = `<div class="top-right-content_html" style="text-align: center; margin-bottom:10px;"><span style="color: gray;">What are CO2 Equivalents (CO2)?</span></div>`
     dets = `<div class="top-right-content_dets" style="text-align: center; margin-bottom:10px;"><span style="color: black;">Emissions of different gases emitted are converted to CO2 equivalent based on 'Global Warming Potential' (GWP)</span></div>`
     dets2 = `<div class="top-right-content_dets" style="text-align: center; margin-bottom:10px;">
+    <span id="popup-close-btn" onclick="closeInfoPopup()">×</span>
     <span style="color: black;">
         This helps in measuring of warming that is contributed by each gas to the greenhouse effect.
         <br> 
@@ -306,10 +304,11 @@ function create_chart(data){
     source = `<div class="top-right-content_dets" style="text-align: center; margin-bottom:10px;">Source: <a href="https://www.cbs.nl/en-gb/news/2019/37/greenhouse-gas-emissions-down/co2-equivalents" target="_blank">Statistics Netherlands</a></div>`
     var topRightDiv = d3.select('.barchart').append("div")
         .attr("class", "top-right-content")
+        .attr("id", "info-popup-container")
         .style("opacity", 0)
         .html(htmlContent+dets+dets2+source);
     //__ unit explaination
-    info.on("mouseover", function(event, d) {
+    info.on("click", function(event, d) {
         topRightDiv.transition()
         .duration(200)
         .style("opacity", 0.9);
@@ -318,11 +317,11 @@ function create_chart(data){
         .style("width", 500 + "px")
         .style("height", 320 + "px");
     } );
-    info.on("mouseout", function(event, d) {
-        topRightDiv.transition()
-        .duration(500)
-        .style("opacity", 0);
-    });
+    // info.on("doubleclick", function(event, d) {
+    //     topRightDiv.transition()
+    //     .duration(500)
+    //     .style("opacity", 0);
+    // });
 
     //__ calaculation explaination
     dets_calc = `<div class="top-right-content_dets" style="text-align: center; margin-bottom:10px;"><span style="color: black;">Production in Kg * Average Kg CO2 eq</span></div>`
@@ -350,4 +349,8 @@ function create_chart(data){
     
 }
 });
+
+function closeInfoPopup() {
+    document.getElementById('info-popup-container').style.display = 'none';
+  }
     
