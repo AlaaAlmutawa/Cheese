@@ -92,6 +92,7 @@ function draw_chart(data) {
     .attr('width', '40%')
     .attr('height', '40%')
     .style('margin', 'auto')
+    .style('margin-top', '3%')
     ;
 
   // Create podium bars with gradient for 3D effect
@@ -115,36 +116,77 @@ function draw_chart(data) {
 
     svg.append('rect')
       .attr('width', 100)
-      .attr('height', d.position === 1 ? 150 : d.position === 2 ? 100 : 50)
+      .attr('height', d.position === 1 ? 150 : d.position === 2 ? 100 : 75)
       .attr('x', i === 0 ? 100 : i === 1 ? 0 : 200)
-      .attr('y', d.position === 1 ? 200 - 150 : d.position === 2 ? 200 - 100 : 200 - 50)
+      .attr('y', d.position === 1 ? 200 - 150 : d.position === 2 ? 200 - 100 : 200 - 75)
       .style('fill', `url(#${gradientId})`);
   });
 
   // Add labels
-  var labels = svg.selectAll('.position-label')
-    .data(podiumData)
-    .enter().append('text')
-    .attr('class', 'position-label')
-    .attr('x', (d, i) => i === 0 ? 150 : i === 1 ? 50 : 250)
-    .attr('y', 180)
-    .attr('text-anchor', 'middle')
-    .attr('fill', 'white')
-    .text(d => d.label)
-    .style('font-size', '25px')
-    // .style('color','white')
-    ;
+  // var labels = svg.selectAll('.position-label')
+  //   .data(podiumData)
+  //   .enter().append('text')
+  //   .attr('class', 'position-label')
+  //   .attr('x', (d, i) => i === 0 ? 150 : i === 1 ? 50 : 250)
+  //   .attr('y', 180)
+  //   .attr('text-anchor', 'middle')
+  //   .attr('fill', 'white')
+  //   .text(d => d.label)
+  //   .style('font-size', '25px')
+  //   // .style('color','white')
+  //   ;
 
   var name = svg.selectAll('.name-label')
     .data(podiumData)
     .enter().append('text')
     .attr('class', 'name-label')
     .attr('x', (d, i) => i === 0 ? 150 : i === 1 ? 50 : 250)
-    .attr('y', (d, i) => d.position === 1 ? 35 : d.position === 2 ? 85 : 135)
+    .attr('y', (d, i) => d.position === 1 ? 30 : d.position === 2 ? 80 : 110)
     .attr('text-anchor', 'middle')
     .style('font-size', '7px')
-    .text(d => d.data.name)
+    .text(d => d.data.name) // + " ("+d.data.animal+")"
     .call(wrap, 100);
+
+
+
+
+  var labels = svg.selectAll('.position-label')
+    .data(podiumData)
+    .enter().append('g')
+    .attr('class', 'position-label')
+    .attr('transform', (d, i) => `translate(${i === 0 ? 150 : i === 1 ? 50 : 250}, 185)`)
+    .style('font-size', d => `${(4-parseFloat(d.label))*6+10}px`)//'25px'
+    .style('fill', 'white');
+
+  labels.append('text')
+    .attr('x', 0)
+    .attr('y', 0)
+    .attr('text-anchor', 'middle')
+    .text(d => d.label);
+
+  const xdict={
+    '1st':-20,
+    '2nd':-15,
+    '3rd':-10,
+  }
+  const ydict={
+    '1st':-65,
+    '2nd':-55,
+    '3rd':-45,
+  }
+
+  labels.append('image')
+    .attr('xlink:href', d => "images/"+d.data.animal+d.label+".png") // Assuming you have an 'imagepath' property in your data
+    .attr('width', d => `${(4-parseFloat(d.label))*6+20}px`) // Adjust the width as needed
+    .attr('height', d => `${(4-parseFloat(d.label))*6+20}px`) // Adjust the height as needed
+    .attr('x', //-20
+    d => xdict[d.label]
+    ) // Adjust the position relative to the text
+    .attr('y', 
+    d => ydict[d.label]
+    // d => `${(parseFloat(d.label))*5-65}px`
+    ); // Adjust the position relative to the text
+
 }
 
 
