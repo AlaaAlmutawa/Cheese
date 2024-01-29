@@ -28,10 +28,10 @@ const iconsdict={
       };
 
 // Declare colors
-const color1="#ADD8E6";
-const color2="#FFCCCB";
-const textcolor1="#3498db";
-const textcolor2="#e74c3c";
+const color1="#DAD5AB";//"#DAE5D0";//"#E9EDC9";//"#CEE5D0";//"#EBD9B4";//"#E4DEBE";//"#E2C799";//"#ADD8E6";
+const color2="#F4DFD0";//"#E4E9BE";//"#FAEDCD";//"#DAE2B6";//"#9DBC98";//"#E6BAA3";//"#F2ECBE";//"#FFCCCB";
+const textcolor1="#877f3b";//"#3498db";
+const textcolor2="#cc9966";//"#e74c3c";
 
 // Declare labels
 const labeldict={
